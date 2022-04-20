@@ -4,7 +4,7 @@ name: Container Build
 description: "This will create a multibranch pipeline job for container builds"
 
 type: pipeline-template
-templateType: MULTIBRANCH
+#templateType: MULTIBRANCH
 
 parameters:
   - name: github_organization
@@ -23,14 +23,6 @@ parameters:
     type: string
     displayName: "Space-separated list of name patterns to ignore even if matched by the includes list. For example: release alpha-* beta-*"
 
-  - name: github_creds
-    type: credentials
-    displayName: Specify the GitHub Credentials ID name for the source code repository (mandatory)
-
-  - name: dockerfiles
-    type: string
-    displayName: Specify the path to the Dockerfile(s) as semicolon delimited string e.g. app01/Dockerfile (optional)
-    
   - name: build_arguments
     type: string
     displayName: Specify the container build arguments as semicolon delimited string e.g. VAR1=FOO;VAR2=BAR (optional)
@@ -44,7 +36,6 @@ multibranch:
     github:
       repoOwner: ${github_organization}
       repository: ${github_repo}
-      credentialsId: ${github_creds}
       traits:
         - gitHubBranchDiscovery:
             strategyId: 3
