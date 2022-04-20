@@ -2,7 +2,7 @@
 
 /* Pipeline */
 pipeline {
-  agent { label "containerBuilds" }
+  agent any
   options { 
     ansiColor('xterm') 
     disableConcurrentBuilds()
